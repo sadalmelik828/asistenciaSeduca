@@ -1,0 +1,164 @@
+{% extends "admin/change_form.html" %}
+
+{% load i18n %}
+
+{% block before_field_sets %}
+<div class="module">
+    <h2>INFORME DE DESARROLLO DEL PROCESO</h2>
+    <div class="form-row">
+        <h3>1. INTRODUCI&Oacute;N</h3>
+        <p>
+            Explica el alcance del informe con sus respectivos cap&iacute;tulos.
+            <br/>
+            Este informe corresponde a <b>{{ cant_eventos|default:'0' }}</b> sesiones de trabajo atendiendo <b>{{ cant_ie|default:'0' }}</b> instituciones educativas y <b>{{ cant_participantes|default:'0' }}</b> participantes en las siguientes sub regiones: <b>{{ subregiones|join:', '}}</b>.
+        </p>
+    </div>
+    <div class="form-row">
+        <h3>2. RESULTADOS DEL PROCESO</h3>
+    </div>
+    <div class="form-row">
+        <h4>2.1 COMPROMISO Y PARTICIPACI&Oacute;N</h4>
+    </div>
+    <div class="form-row">
+        <style type="text/css">
+            table {
+                border: 1px solid #B5B5B5;
+            }
+            table th {
+                text-align: center;
+                border-right: 1px solid #B5B5B5;
+                border-bottom: 1px solid #B5B5B5;
+                background: white;
+            }
+            table td {
+                border-right: 1px solid #B5B5B5;
+                border-bottom: 1px solid #B5B5B5;
+            }
+            table tr:nth-child(odd) {
+            background: #D0D0D0;
+            }
+        </style>
+        {% if agregados|length > 0 %}
+        <p>
+            <h5>2.1.1 Cuadro de Resultados Agregados</h5>
+        </p>
+        <table border="1" cellspacing="0" cellpadding="0">
+            <tr>
+                <th rowspan="2">Categor&iacute;a</th>
+                <th rowspan="2">Criterio</th>
+                <th colspan="2">Cantidades</th>
+            </tr>
+            <tr>
+                <th>Si</th>
+                <th>No</th>
+            </tr>
+            {% for i in agregados %}
+            <tr>
+                <td>{{ i.categoria.nombre }}</td>
+                <td>{{ i.nombre }}</td>
+                <td>{{ i.si }}</td>
+                <td>{{ i.no }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>
+            El capacitador a&uacute;n no tiene evaluaciones de proceso diligenciadas.
+        </p>
+        {% endif %}
+    </div>
+    <div class="form-row">
+        {% if asistencias|length > 0 %}
+        <h5>2.1.2 Cuadro de Asistencias</h5>
+        <table border="1" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>Sub-regi&oacute;n</th>
+                <th>Municipio</th>
+                <th>Asistentes</th>
+            </tr>
+            {% for m in asistencias %}
+            <tr>
+                <td>{{ m.subregion }}</td>
+                <td>{{ m.nombre }}</td>
+                <td>{{ m.asistentes }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>
+            El capacitador no tiene asistentes en sus eventos o posiblemente no tiene eventos.
+        </p>
+        {% endif %}
+    </div>
+    <div class="form-row">
+        <h4>2.2 EVALUACI&Oacute;N DEL PROCESO</h4>
+    </div>
+    <div class="form-row">
+        {% if consolidado|length > 0 %}
+        <h5>Cuadro consolidado de la evaluaci&oacute;n del proceso</h5>
+        <table border="1" cellspacing="0" cellpadding="0">
+            <tr>
+                <th colspan="3">instituci&oacute;n Educativa</th>
+                <th colspan="6">Categor&iacute;as</th>
+            </tr>
+            <tr>
+                <th rowspan="2">C&oacute;digo DANE</th>
+                <th rowspan="2">Nombre</th>
+                <th rowspan="2">Municipio</th>
+                <th colspan="3">Compromiso</th>
+                <th colspan="3">Desarrollo del proceso</th>
+            </tr>
+            <tr>
+                <th>Todas Si</th>
+                <th>Todas No</th>
+                <th>Diferentes</th>
+                <th>Todas Si</th>
+                <th>Todas No</th>
+                <th>Diferentes</th>
+            </tr>
+            {% for r in consolidado %}
+            <tr>
+                <td>{{ r.dane }}</td>
+                <td>{{ r.nombre }}</td>
+                <td>{{ r.municipio.nombre }}</td>
+                {% if r.compromiso == 'si' %}
+                <td>X</td>
+                <td></td>
+                <td></td>
+                {% endif %}
+                {% if r.compromiso == 'no' %}
+                <td></td>
+                <td>X</td>
+                <td></td>
+                {% endif %}
+                {% if r.compromiso == 'diferente' %}
+                <td></td>
+                <td></td>
+                <td>X</td>
+                {% endif %}
+                {% if r.desarrollo == 'si' %}
+                <td>X</td>
+                <td></td>
+                <td></td>
+                {% endif %}
+                {% if r.desarrollo == 'no' %}
+                <td></td>
+                <td>X</td>
+                <td></td>
+                {% endif %}
+                {% if r.desarrollo == 'diferente' %}
+                <td></td>
+                <td></td>
+                <td>X</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>
+            El capacitador no tiene diligenciado evaluaciones de proceso para determinar un consolidado.
+        </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+INSERT INTO `criterio_informe_final` (`id`, `nombre`, `categoria_id`) VALUES (1, 'La institución mantiene y respeta fechas y horas establecidas para el desarrollo de las actividades propuestas.', 1);
+INSERT INTO `criterio_informe_final` (`id`, `nombre`, `categoria_id`) VALUES (2, 'La institución desarrolla las actividades propuestas y hace entrega de estas en los tiempos establecidos.', 1);
+INSERT INTO `criterio_informe_final` (`id`, `nombre`, `categoria_id`) VALUES (3, 'La institución asume e incorpora las observaciones presentadas en la retroalimentación como parte de su proceso de cualificación.', 1);
+INSERT INTO `criterio_informe_final` (`id`, `nombre`, `categoria_id`) VALUES (4, 'Las actividades desarrolladas demuestran la apropiación de los conceptos y su incorporación al diseño curricular de formación por competencias.', 2);
+INSERT INTO `criterio_informe_final` (`id`, `nombre`, `categoria_id`) VALUES (5, 'La institución educativa genera dinámicas que permiten la socialización y apropiación del proceso por parte de todos sus miembros.', 2);
+INSERT INTO `criterio_informe_final` (`id`, `nombre`, `categoria_id`) VALUES (6, 'La institución propicia dinámicas que permiten el alcance de las metas previstas en el proyecto.', 2);
+INSERT INTO `criterio_informe_final` (`id`, `nombre`, `categoria_id`) VALUES (7, 'La institución identifica las oportunidades de mejoramiento en el diseño de su currículo', 3);
+INSERT INTO `criterio_informe_final` (`id`, `nombre`, `categoria_id`) VALUES (8, 'La institución educativa reconoce los factores de riesgo que pueden obstaculizar el desarrollo del proceso.', 3);

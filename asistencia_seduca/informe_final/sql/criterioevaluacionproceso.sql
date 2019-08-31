@@ -1,0 +1,5 @@
+INSERT INTO `criterio_evaluacion_proceso` (`id`, `nombre`, `categoria_id`) VALUES (1, 'La institución mantiene y respeta fechas y horas establecidas para el desarrollo de las actividades propuestas.', 1);
+INSERT INTO `criterio_evaluacion_proceso` (`id`, `nombre`, `categoria_id`) VALUES (2, 'La institución desarrolla las actividades propuestas y hace entrega de éstas en los tiempos establecidos.', 1);
+INSERT INTO `criterio_evaluacion_proceso` (`id`, `nombre`, `categoria_id`) VALUES (3, 'En el desarrollo de las actividades se demuestra apropiación conceptual.', 2);
+INSERT INTO `criterio_evaluacion_proceso` (`id`, `nombre`, `categoria_id`) VALUES (4, 'La institución educativa participa de forma activa en las jornadas  de socialización previstas para el proceso formativo.', 2);
+INSERT INTO `criterio_evaluacion_proceso` (`id`, `nombre`, `categoria_id`) VALUES (5, 'En las actividades de aplicación se evidencia la capacidad de relacionar los nuevos conceptos con las prácticas educativas cotidianas para ajustarlas al proceso de formación por competencias.', 2);
